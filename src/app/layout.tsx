@@ -19,12 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="sm">
-        <Header />
-        <main>
-          <div className="mt-4 md:mt-6 px-4 md:px-6">{children}</div>
-        </main>
-        <Footer />
+      <body>
+        <div>
+          <Header />
+          <main>
+            <div>{children}</div>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

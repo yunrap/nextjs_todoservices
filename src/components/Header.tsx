@@ -2,9 +2,12 @@ import Gnb from "./Gnb";
 
 const Header = () => {
   return (
-    <header>
+    <div
+      style={{ background: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}
+      className="h-[60px] w-full"
+    >
       <Gnb />
-    </header>
+    </div>
   );
 };
 export default Header;

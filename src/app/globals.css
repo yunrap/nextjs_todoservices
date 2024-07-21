@@ -6,3 +6,9 @@ body {
   font-family: "NanumSquare", sans-serif;
   background-color: #f9fafb;
 }
+
+@layer components {
+  .inputBox {
+    @apply;
+  }
+}
