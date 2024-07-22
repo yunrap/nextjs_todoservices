@@ -14,8 +14,8 @@ export const ButtonVariants = cva(
         red: "bg-rose",
       },
       size: {
-        default: "w-[164.35px] h-[52px]",
-        md: "w-[164.35px] h-[52px]",
+        default: "w-[3.5rem] h-[3.5rem]",
+        md: "w-[3.5rem] h-[3.5rem]",
         lg: "w-[21rem] h-[7rem] text-[2rem] rounded-3xl",
         wlg: "w-[24rem] h-[5rem] text-[2rem]",
         rounded: "w-[6rem] h-[6rem] rounded-full",
@@ -27,6 +27,7 @@ export const ButtonVariants = cva(
     },
   }
 );
+1;
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
