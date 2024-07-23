@@ -1,23 +1,26 @@
 "use client";
 import type { NextPage } from "next";
 import Image from "next/image";
-import CheckBox from "@/components/CheckBox";
 import Button from "@/components/Button";
 import SearchBox from "@/components/SearchBox";
 import { useState } from "react";
 import axios from "axios";
-import { apiInstance } from "@/apis/setting";
+import IndexCheckBoxList from "./IndexCheckBoxList";
+import useGetListTodo from "@/react-query/useGetListTodo";
 
 const Index: NextPage = () => {
   const [searchValue, setSearchValue] = useState<string>("");
+  const { refetch, todoList, todoListY } = useGetListTodo();
 
+  // 등록
   const onClickEvent = async () => {
     const formData = {
       name: searchValue,
     };
 
     try {
-      const response = await axios.post("/api/yunyeji/items", formData);
+      await axios.post("/api/yunyeji/items", formData);
+      refetch();
     } catch (e) {
       console.log(e);
     }
@@ -47,15 +50,11 @@ const Index: NextPage = () => {
       <div>
         <Image src="/images/todo.svg" alt="todo" width={71} height={40} />
       </div>
-      <CheckBox variant={"default"} />
-      <CheckBox variant={"default"} />
-      <CheckBox variant={"default"} />
+      <IndexCheckBoxList checkBoxList={todoList} />
       <div>
         <Image src="/images/done.svg" alt="done" width={71} height={40} />
       </div>
-      <CheckBox variant={"violet"} />
-      <CheckBox variant={"violet"} />
-      <CheckBox variant={"violet"} />
+      <IndexCheckBoxList checkBoxList={todoListY} />
     </div>
   );
 };

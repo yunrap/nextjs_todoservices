@@ -36,6 +36,12 @@ module.exports = {
       amber: "#92400E",
       dddd: "#3cff00",
     },
+    extend: {
+      backgroundImage: {
+        checkbox: "url('/images/checkbox.svg')",
+        checkboxCk: "url('/images/checkbox_ck.svg')",
+      },
+    },
   },
   plugins: [],
 };

@@ -1,48 +1,61 @@
 import { cn } from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
-import { FC } from "react";
+import { FC, InputHTMLAttributes } from "react";
 
 export const checkboxVariants = cva(
-  `rounded-[27px] border-slate-900 border-2`,
+  `rounded-[27px] bg-white border-slate-900 border-2`,
   {
     variants: {
       variant: {
         default: "bg-white",
         violet: "bg-violet-100",
       },
-      size: {
-        default: "",
-        md: " w-[6rem] h-[2rem] text-[1rem] rounded-md",
-        lg: "w-[21rem] h-[7rem] text-[2rem] rounded-3xl",
-        wlg: "w-[24rem] h-[5rem] text-[2rem]",
-        rounded: "w-[6rem] h-[6rem] rounded-full",
-      },
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
     },
   }
 );
 
-interface CheckBoxProps extends VariantProps<typeof checkboxVariants> {
+interface CheckBoxProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof checkboxVariants> {
   label?: string;
+  id?: string;
   children?: React.ReactElement;
   additionalClass?: string;
+  checked?: boolean;
 }
 
 const CheckBox: FC<CheckBoxProps> = ({
   variant,
-  size,
   children,
   label,
+  id,
   additionalClass,
+  checked,
   ...props
 }) => {
   return (
     <div className={cn(checkboxVariants({ variant }))}>
-      <input type="checkbox" id="horns" name="horns" />
-      <label htmlFor="horns">Horns</label>
+      <div className="flex">
+        <label
+          className={`bg-[url('/images/checkbox.svg')] bg-no-repeat w-8 h-8 checked:bg-[url('/images/checkbox_ck.svg')]`}
+          htmlFor="horns"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            className={`w-8 h-8  ${additionalClass}`}
+            id={id}
+            name="horns"
+            checked={checked}
+            {...props}
+          />
+        </label>
+        {children && children}
+        {label && label}
+      </div>
     </div>
   );
 };
