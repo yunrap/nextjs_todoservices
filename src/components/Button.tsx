@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, FC } from "react";
 
 export const ButtonVariants = cva(
   //공통 CSS
-  `border-2 rounded-3xl border-slate-900`,
+  `border-2 rounded-3xl border-slate-900 w-[3.5rem] md:w-[10rem]`,
   {
     //variant,size 개별설정
     variants: {
@@ -12,13 +12,12 @@ export const ButtonVariants = cva(
         default: "bg-slate-200",
         grey: "bg-slate-200",
         red: "bg-rose",
+        violet: "bg-violet-600",
+        lime: "bg-lime",
       },
       size: {
         default: "w-[3.5rem] h-[3.5rem]",
-        md: "w-[3.5rem] h-[3.5rem]",
-        lg: "w-[21rem] h-[7rem] text-[2rem] rounded-3xl",
-        wlg: "w-[24rem] h-[5rem] text-[2rem]",
-        rounded: "w-[6rem] h-[6rem] rounded-full",
+        md: "w-[164px] h-[52px]",
       },
     },
     defaultVariants: {
@@ -54,13 +53,15 @@ const Button: FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <button
-      className={cn(ButtonVariants({ variant, size }), additionalClass)}
-      {...props}
-    >
-      {children && children}
-      {label && label}
-    </button>
+    <>
+      <button
+        className={cn(ButtonVariants({ variant, size }), additionalClass)}
+        {...props}
+      >
+        {children && children}
+        {label && label}
+      </button>
+    </>
   );
 };
 

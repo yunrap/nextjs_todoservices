@@ -3,12 +3,25 @@
 @tailwind utilities;
 
 body {
-  font-family: "NanumSquare", sans-serif;
-  background-color: #f9fafb;
+  font-family: "NanumSquare";
+  background-color: #ffffff;
+  font-size: 16px;
 }
 
 @layer components {
   .inputBox {
     @apply;
   }
+}
+
+.input-transparent {
+  background-color: transparent;
+}
+
+.textarea-transparent {
+  background-color: transparent;
+}
+
+.bg-violet {
+  background-color: #ede9fe;
 }

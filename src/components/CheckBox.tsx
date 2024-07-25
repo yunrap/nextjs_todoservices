@@ -1,9 +1,23 @@
+/*
+ * <pre>
+ * @title CheckBox.tsx
+ * @desc 체크리스트 컴포넌트
+ * </pre>
+ *
+ * @author 윤예지
+ * @since 2024.07.25
+ * @version 0.1.0
+ * @see =================== 변경 내역 ==================
+ *   날짜       변경자     내용
+ *  2024.07.25.  윤예지  최초작성
+ */
+
 import { cn } from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import { FC, InputHTMLAttributes } from "react";
 
 export const checkboxVariants = cva(
-  `rounded-[27px] bg-white border-slate-900 border-2`,
+  `rounded-[27px] bg-white border-slate-900 border-2 h-[50px]`,
   {
     variants: {
       variant: {
@@ -27,6 +41,12 @@ interface CheckBoxProps
   checked?: boolean;
 }
 
+/**
+ * @size 사이즈 지정 md, lg, wlg
+ * @children ReactElement 아이콘 등 추가
+ * @additionalClass 추가할 클래스 속성
+ * @props 추가할 input 속성
+ */
 const CheckBox: FC<CheckBoxProps> = ({
   variant,
   children,
@@ -38,23 +58,24 @@ const CheckBox: FC<CheckBoxProps> = ({
 }) => {
   return (
     <div className={cn(checkboxVariants({ variant }))}>
-      <div className="flex">
-        <label
-          className={`bg-[url('/images/checkbox.svg')] bg-no-repeat w-8 h-8 checked:bg-[url('/images/checkbox_ck.svg')]`}
-          htmlFor="horns"
-          onClick={(e) => e.stopPropagation()}
-        >
+      <div className="flex h-full items-center pl-[12px]">
+        <div className="flex">
           <input
             type="checkbox"
-            className={`w-8 h-8  ${additionalClass}`}
+            className={`opacity-0 absolute w-8 h-8 show show peer ${additionalClass}`}
             id={id}
             name="horns"
             checked={checked}
             {...props}
+            onClick={(e) => e.stopPropagation()}
           />
-        </label>
+          <label
+            className={`bg-[url('/images/checkbox.svg')] w-8 h-8 bg-no-repeat peer-checked:bg-[url('/images/checkbox_ck.svg')]`}
+            htmlFor={id}
+          ></label>
+        </div>
         {children && children}
-        {label && label}
+        <p className={`pl-[4.5px] ${checked && "line-through"}`}>{label && label}</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
 const Footer = () => {
-  return <p className="">footer입니다.</p>;
+  return <p className=""></p>;
 };
 export default Footer;

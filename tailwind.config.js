@@ -40,6 +40,7 @@ module.exports = {
       backgroundImage: {
         checkbox: "url('/images/checkbox.svg')",
         checkboxCk: "url('/images/checkbox_ck.svg')",
+        memo: "url('/images/memo.svg')",
       },
     },
   },
